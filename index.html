@@ -1,149 +1,324 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Simay ❤️</title>
+<title>Simay ❤️</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #03030b;
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+
+/* YILDIZLI ARKA PLAN */
+
+#stars {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 50% 30%, #171329 0%, #080711 45%, #020205 100%);
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--duration) infinite ease-in-out;
+    animation-delay: var(--delay);
+    box-shadow: 0 0 6px rgba(255,255,255,0.8);
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scale(0.7);
     }
 
-    html {
-      scroll-behavior: smooth;
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+
+/* İLK EKRAN */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: appear 2.5s ease;
+}
+
+.for-you {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 6px;
+    opacity: 0.55;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(65px, 12vw, 120px);
+    font-weight: normal;
+    margin: 0;
+    text-shadow: 0 0 35px rgba(255,255,255,0.15);
+}
+
+.line {
+    width: 60px;
+    height: 1px;
+    margin: 35px auto;
+    background: rgba(255,255,255,0.4);
+}
+
+.message {
+    font-size: clamp(19px, 3vw, 26px);
+    line-height: 1.9;
+    opacity: 0.9;
+}
+
+.main-message {
+    margin-top: 45px;
+    font-size: clamp(24px, 4vw, 34px);
+    font-style: italic;
+}
+
+
+/* AŞAĞI KAYDIR */
+
+.scroll {
+    margin-top: 80px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    opacity: 0.4;
+}
+
+.arrow {
+    display: block;
+    font-size: 25px;
+    margin-top: 12px;
+    animation: arrow 1.8s infinite;
+}
+
+@keyframes arrow {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
     }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Georgia, serif;
-      color: white;
-      background:
-        radial-gradient(circle at top, #40203c 0%, #190d1c 45%, #08050b 100%);
+    50% {
+        transform: translateY(10px);
+        opacity: 0.8;
     }
+}
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 30px;
+
+/* FOTOĞRAF BÖLÜMÜ */
+
+.memories {
+    min-height: 100vh;
+    padding: 120px 25px;
+    text-align: center;
+}
+
+.memories h2 {
+    font-size: clamp(35px, 6vw, 60px);
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.memories-subtitle {
+    opacity: 0.55;
+    font-style: italic;
+    margin-bottom: 70px;
+}
+
+.photos {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.photo {
+    aspect-ratio: 3 / 4;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+.photo span {
+    opacity: 0.25;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .photos {
+        grid-template-columns: 1fr;
+        max-width: 350px;
     }
+}
 
-    .container {
-      max-width: 750px;
-      animation: appear 2s ease;
-    }
 
-    .small-title {
-      font-size: 18px;
-      letter-spacing: 4px;
-      opacity: 0.65;
-      margin-bottom: 25px;
-    }
+/* AÇILIŞ ANİMASYONU */
 
-    h1 {
-      font-size: clamp(55px, 10vw, 100px);
-      margin: 0;
-      font-weight: normal;
-    }
-
-    .line {
-      width: 70px;
-      height: 1px;
-      background: rgba(255,255,255,0.5);
-      margin: 35px auto;
-    }
-
-    .message {
-      font-size: clamp(20px, 4vw, 28px);
-      line-height: 1.8;
-      opacity: 0.92;
-    }
-
-    .stars {
-      font-size: 25px;
-      letter-spacing: 12px;
-      margin-top: 40px;
-      animation: glow 2s infinite alternate;
-    }
-
-    .signature {
-      margin-top: 55px;
-      font-size: 17px;
-      font-style: italic;
-      opacity: 0.7;
-    }
-
-    @keyframes appear {
-      from {
+@keyframes appear {
+    from {
         opacity: 0;
         transform: translateY(25px);
-      }
+    }
 
-      to {
+    to {
         opacity: 1;
         transform: translateY(0);
-      }
     }
+}
 
-    @keyframes glow {
-      from {
-        opacity: 0.35;
-        text-shadow: 0 0 5px white;
-      }
-
-      to {
-        opacity: 1;
-        text-shadow: 0 0 20px white;
-      }
-    }
-  </style>
+</style>
 </head>
+
 
 <body>
 
-  <section class="hero">
+<div id="stars"></div>
 
-    <div class="container">
 
-      <div class="small-title">
-        SADECE SENİN İÇİN
-      </div>
+<section class="hero">
 
-      <h1>Simay</h1>
+    <div class="hero-content">
 
-      <div class="line"></div>
+        <div class="for-you">
+            SADECE SENİN İÇİN
+        </div>
 
-      <div class="message">
-        Balım,<br><br>
+        <h1>Simay</h1>
 
-        sana söylemek istediğim şeyleri
-        tek bir sayfaya sığdırabilir miyim bilmiyorum.<br><br>
+        <div class="line"></div>
 
-        Ama bir yerden başlamak istedim.<br><br>
+        <div class="message">
 
-        O yüzden burası sadece senin.
-      </div>
+            Balım,<br><br>
 
-      <div class="stars">
-        ✦ ✧ ✦
-      </div>
+            sana söylemek istediğim şeyleri
+            tek bir sayfaya sığdırabilir miyim bilmiyorum.<br><br>
 
-      <div class="message" style="margin-top: 35px;">
-        Seni yıldızlar kadar çok seviyorum.
-      </div>
+            Ama bir yerden başlamak istedim.<br><br>
 
-      <div class="signature">
-        — Ömer
-      </div>
+            O yüzden burası sadece senin.
+
+        </div>
+
+        <div class="main-message">
+            Seni yıldızlar kadar çok seviyorum.
+        </div>
+
+        <div class="scroll">
+            BİRAZ DAHA AŞAĞI
+            <span class="arrow">⌄</span>
+        </div>
 
     </div>
 
-  </section>
+</section>
+
+
+<section class="memories">
+
+    <h2>Biz.</h2>
+
+    <div class="memories-subtitle">
+        En sevdiğim fotoğrafların ortak bir yanı var.
+        Hepsinde sen varsın.
+    </div>
+
+    <div class="photos">
+
+        <div class="photo">
+            <span>bir anımız</span>
+        </div>
+
+        <div class="photo">
+            <span>bir anımız daha</span>
+        </div>
+
+        <div class="photo">
+            <span>ve bir tane daha</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* Rastgele yıldızlar oluştur */
+
+const starsContainer = document.getElementById("stars");
+
+for (let i = 0; i < 180; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    const size = Math.random() * 2.2 + 0.6;
+
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+
+    star.style.setProperty(
+        "--duration",
+        (Math.random() * 4 + 2) + "s"
+    );
+
+    star.style.setProperty(
+        "--delay",
+        (Math.random() * 5) + "s"
+    );
+
+    starsContainer.appendChild(star);
+}
+
+</script>
 
 </body>
 </html>
