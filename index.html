@@ -658,6 +658,280 @@ h1 {
         text-shadow: 0 0 18px white;
     }
 }
+    /* =========================
+   YILDIZLI MEKTUP
+========================= */
+
+.letter-section {
+    min-height: 100vh;
+    padding: 130px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    transform: translateY(50px);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.letter-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.star-letter {
+    position: relative;
+
+    width: min(900px, 100%);
+
+    padding: 75px 70px;
+
+    border: 1px solid rgba(255,255,255,.22);
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,.08),
+        0 0 70px rgba(120,140,255,.08),
+        inset 0 0 40px rgba(255,255,255,.025);
+}
+
+.star-letter::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: 30px;
+
+    pointer-events: none;
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.18),
+        0 0 30px rgba(150,170,255,.10);
+
+    animation: frameGlow 4s infinite alternate ease-in-out;
+}
+
+@keyframes frameGlow {
+    from {
+        opacity: .35;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* METİN */
+
+.letter-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+}
+
+.letter-content p {
+    margin: 0 0 30px;
+
+    font-size: clamp(17px, 2.2vw, 21px);
+
+    line-height: 1.95;
+
+    color: rgba(255,255,255,.80);
+}
+
+.letter-opening {
+    margin-bottom: 42px !important;
+
+    font-size: clamp(25px, 4vw, 34px) !important;
+
+    font-style: italic;
+
+    color: white !important;
+}
+
+.letter-highlight {
+    margin: 50px 0 !important;
+
+    font-size: clamp(27px, 4.5vw, 38px) !important;
+
+    font-style: italic;
+
+    color: white !important;
+
+    text-shadow:
+        0 0 12px rgba(255,255,255,.2),
+        0 0 30px rgba(150,170,255,.18);
+}
+
+.letter-ending {
+    margin-top: 55px !important;
+    margin-bottom: 0 !important;
+
+    font-size: clamp(24px, 4vw, 34px) !important;
+
+    font-style: italic;
+
+    color: white !important;
+}
+
+
+/* =========================
+   ÇERÇEVEYİ SARAN YILDIZLAR
+========================= */
+
+.frame-star {
+    position: absolute;
+
+    z-index: 3;
+
+    color: white;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 14px rgba(170,190,255,.9),
+        0 0 28px rgba(130,150,255,.5);
+
+    animation: borderTwinkle 2.8s infinite ease-in-out;
+}
+
+.s1 {
+    top: -12px;
+    left: 8%;
+    font-size: 20px;
+    animation-delay: .2s;
+}
+
+.s2 {
+    top: -10px;
+    left: 30%;
+    font-size: 13px;
+    animation-delay: 1.2s;
+}
+
+.s3 {
+    top: -15px;
+    right: 22%;
+    font-size: 24px;
+    animation-delay: .7s;
+}
+
+.s4 {
+    top: 8%;
+    right: -10px;
+    font-size: 16px;
+    animation-delay: 1.7s;
+}
+
+.s5 {
+    top: 32%;
+    right: -14px;
+    font-size: 25px;
+    animation-delay: .5s;
+}
+
+.s6 {
+    bottom: 20%;
+    right: -9px;
+    font-size: 13px;
+    animation-delay: 2s;
+}
+
+.s7 {
+    bottom: -13px;
+    right: 15%;
+    font-size: 22px;
+    animation-delay: .9s;
+}
+
+.s8 {
+    bottom: -8px;
+    right: 42%;
+    font-size: 13px;
+    animation-delay: 1.5s;
+}
+
+.s9 {
+    bottom: -14px;
+    left: 18%;
+    font-size: 25px;
+    animation-delay: .3s;
+}
+
+.s10 {
+    bottom: 23%;
+    left: -10px;
+    font-size: 15px;
+    animation-delay: 1.8s;
+}
+
+.s11 {
+    top: 40%;
+    left: -15px;
+    font-size: 25px;
+    animation-delay: 1s;
+}
+
+.s12 {
+    top: 12%;
+    left: -8px;
+    font-size: 14px;
+    animation-delay: 2.2s;
+}
+
+@keyframes borderTwinkle {
+
+    0%, 100% {
+        opacity: .25;
+        transform: scale(.7) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.35) rotate(20deg);
+    }
+
+}
+
+
+/* TELEFON */
+
+@media (max-width: 700px) {
+
+    .letter-section {
+        padding:
+            100px 18px;
+    }
+
+    .star-letter {
+        padding:
+            55px 25px;
+
+        border-radius: 22px;
+    }
+
+    .letter-content p {
+        font-size: 17px;
+        line-height: 1.85;
+    }
+
+}
 </style>
 </head>
 
@@ -775,7 +1049,79 @@ h1 {
 
 </section>
 
+<section class="letter-section reveal">
 
+    <div class="star-letter">
+
+        <span class="frame-star s1">✦</span>
+        <span class="frame-star s2">✧</span>
+        <span class="frame-star s3">✦</span>
+        <span class="frame-star s4">✧</span>
+        <span class="frame-star s5">✦</span>
+        <span class="frame-star s6">✧</span>
+        <span class="frame-star s7">✦</span>
+        <span class="frame-star s8">✧</span>
+        <span class="frame-star s9">✦</span>
+        <span class="frame-star s10">✧</span>
+        <span class="frame-star s11">✦</span>
+        <span class="frame-star s12">✧</span>
+
+        <div class="letter-content">
+
+            <p class="letter-opening">
+                Güzelim, her şeyim.
+            </p>
+
+            <p>
+                Güzel günlerimiz olduğu gibi kötü günlerimiz de olabilir.
+                Önemli olan birbirimize sahip olduğumuzu bilmek.
+                Fazlasına ihtiyacımız yok.
+            </p>
+
+            <p>
+                Öyle diliyorum ki bir ömrü birlikte geçireceğiz.
+                Dolu dolu ve en önemlisi çok mutlu.
+            </p>
+
+            <p>
+                Ne koşulda olursa olsun her zaman yanında olduğumu bilmeni istiyorum,
+                bu siteyi de tam olarak bu yüzden yaptım.
+            </p>
+
+            <p>
+                Arka planda senin yokluğunda yaptığım şarkı çalıyor.
+                Hani olur da bir an olsun eksikliğimi hissedersin,
+                seni bir kez daha kaybetmekten ne kadar çekindiğimi bil isterim.
+            </p>
+
+            <p>
+                Bu yüzden eksikliğimi hiç hissetmeyeceksin.
+            </p>
+
+            <p class="letter-highlight">
+                Seni yıldızlar kadar çok seviyorum.
+            </p>
+
+            <p>
+                Gündüzleri yıldızları göremezsin,
+                ama gece olduğunda gözünün gördüğü tüm yıldızları görebilirsin.
+            </p>
+
+            <p>
+                Gündüzleri korkma birtanem,
+                gözünü açıp kapattığında tekrar gece olacak
+                ve ben tüm o yıldızlarla birlikte seninle olacağım.
+            </p>
+
+            <p class="letter-ending">
+                Önemli olan bir sensin, bir de biziz.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 <!-- =====================
      ÖZEL GÜN
