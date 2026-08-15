@@ -555,13 +555,129 @@ h1 {
         margin: auto;
     }
 }
+/* =========================
+   MÜZİKLİ AÇILIŞ EKRANI
+========================= */
 
+#welcomeScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 30px;
+
+    background:
+        radial-gradient(circle at center, #17142b 0%, #080711 50%, #020205 100%);
+
+    transition:
+        opacity 1.8s ease,
+        visibility 1.8s ease;
+}
+
+#welcomeScreen.opened {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-stars {
+    margin-bottom: 35px;
+
+    font-size: 20px;
+    letter-spacing: 10px;
+
+    opacity: .65;
+
+    animation: welcomeGlow 2s infinite alternate;
+}
+
+#enterButton {
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 100px;
+
+    padding: 20px 32px;
+
+    background: rgba(255,255,255,.04);
+
+    color: white;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(18px, 4vw, 24px);
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 40px rgba(100,130,255,.08);
+
+    transition:
+        transform .4s ease,
+        background .4s ease,
+        box-shadow .4s ease;
+}
+
+#enterButton:hover {
+    transform: scale(1.04);
+
+    background: rgba(255,255,255,.08);
+
+    box-shadow:
+        0 0 60px rgba(100,130,255,.16);
+}
+
+.welcome-small {
+    margin-top: 25px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .3;
+}
+
+@keyframes welcomeGlow {
+
+    from {
+        opacity: .25;
+        text-shadow: 0 0 5px white;
+    }
+
+    to {
+        opacity: .9;
+        text-shadow: 0 0 18px white;
+    }
+}
 </style>
 </head>
 
 
 <body>
+<audio id="ourSong" preload="auto">
+    <source src="sarkimiz.mp3" type="audio/mpeg">
+</audio>
 
+<div id="welcomeScreen">
+    <div class="welcome-stars">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <button id="enterButton">
+        Canım, Balım buraya dokun 💙
+    </button>
+
+    <div class="welcome-small">
+        senin için küçük bir şey yaptım
+    </div>
+</div>
 
 <div id="stars"></div>
 
@@ -845,7 +961,63 @@ document
         observer.observe(element);
 
     });
+/* =========================
+   ŞARKILI AÇILIŞ
+========================= */
 
+const welcomeScreen =
+    document.getElementById("welcomeScreen");
+
+const enterButton =
+    document.getElementById("enterButton");
+
+const ourSong =
+    document.getElementById("ourSong");
+
+
+enterButton.addEventListener("click", () => {
+
+    ourSong.volume = 0;
+
+    ourSong.play().catch(error => {
+        console.log("Müzik başlatılamadı:", error);
+    });
+
+
+    /* Şarkı yavaşça yükselsin */
+
+    let volume = 0;
+
+    const fadeMusic =
+        setInterval(() => {
+
+            volume += 0.02;
+
+            if (volume >= 0.75) {
+
+                volume = 0.75;
+
+                clearInterval(fadeMusic);
+            }
+
+            ourSong.volume = volume;
+
+        }, 80);
+
+
+    /* Açılış ekranını yavaşça kaldır */
+
+    welcomeScreen.classList.add("opened");
+
+
+    /* Sayfayı en başa getir */
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
 </script>
 
 
