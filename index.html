@@ -23,7 +23,9 @@ body {
     overflow-x: hidden;
 }
 
-/* YILDIZLI ARKA PLAN */
+/* =========================
+   YILDIZLI ARKA PLAN
+========================= */
 
 #stars {
     position: fixed;
@@ -31,181 +33,526 @@ body {
     width: 100%;
     height: 100%;
     z-index: -2;
+
     background:
-        radial-gradient(circle at 50% 30%, #171329 0%, #080711 45%, #020205 100%);
+        radial-gradient(circle at 50% 25%, #18132a 0%, #090711 45%, #020205 100%);
 }
 
 .star {
     position: absolute;
-    width: 2px;
-    height: 2px;
     background: white;
     border-radius: 50%;
     opacity: 0;
-    animation: twinkle var(--duration) infinite ease-in-out;
+
+    animation:
+        twinkle var(--duration) infinite ease-in-out;
+
     animation-delay: var(--delay);
-    box-shadow: 0 0 6px rgba(255,255,255,0.8);
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,.8),
+        0 0 12px rgba(180,190,255,.25);
 }
 
 @keyframes twinkle {
+
     0%, 100% {
-        opacity: 0.15;
-        transform: scale(0.7);
+        opacity: .12;
+        transform: scale(.7);
     }
 
     50% {
         opacity: 1;
-        transform: scale(1.5);
+        transform: scale(1.6);
     }
 }
 
 
-/* İLK EKRAN */
+/* =========================
+   İLK EKRAN
+========================= */
 
 .hero {
     min-height: 100vh;
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
     text-align: center;
-    padding: 30px;
+
+    padding: 40px 25px;
 }
 
 .hero-content {
     max-width: 800px;
+
     animation: appear 2.5s ease;
 }
 
 .for-you {
     font-family: Arial, sans-serif;
-    font-size: 12px;
+
+    font-size: 11px;
+
     letter-spacing: 6px;
-    opacity: 0.55;
-    margin-bottom: 25px;
+
+    opacity: .5;
+
+    margin-bottom: 30px;
 }
 
 h1 {
-    font-size: clamp(65px, 12vw, 120px);
-    font-weight: normal;
     margin: 0;
-    text-shadow: 0 0 35px rgba(255,255,255,0.15);
+
+    font-weight: normal;
+
+    font-size: clamp(65px, 12vw, 120px);
+
+    text-shadow:
+        0 0 40px rgba(255,255,255,.15);
 }
 
 .line {
-    width: 60px;
+    width: 65px;
     height: 1px;
+
     margin: 35px auto;
-    background: rgba(255,255,255,0.4);
+
+    background:
+        rgba(255,255,255,.4);
 }
 
 .message {
     font-size: clamp(19px, 3vw, 26px);
+
     line-height: 1.9;
-    opacity: 0.9;
+
+    opacity: .88;
 }
 
-.main-message {
-    margin-top: 45px;
-    font-size: clamp(24px, 4vw, 34px);
+.love {
+    margin-top: 50px;
+
+    font-size: clamp(25px, 4vw, 36px);
+
     font-style: italic;
+
+    text-shadow:
+        0 0 25px rgba(255,255,255,.12);
 }
 
 
-/* AŞAĞI KAYDIR */
+/* =========================
+   AŞAĞI KAYDIR
+========================= */
 
 .scroll {
-    margin-top: 80px;
+    margin-top: 85px;
+
     font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    opacity: 0.4;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    opacity: .4;
 }
 
 .arrow {
     display: block;
-    font-size: 25px;
+
     margin-top: 12px;
+
+    font-size: 28px;
+
     animation: arrow 1.8s infinite;
 }
 
 @keyframes arrow {
+
     0%, 100% {
         transform: translateY(0);
-        opacity: 0.3;
+        opacity: .3;
     }
 
     50% {
         transform: translateY(10px);
-        opacity: 0.8;
+        opacity: .9;
     }
 }
 
 
-/* FOTOĞRAF BÖLÜMÜ */
+/* =========================
+   BİZ BÖLÜMÜ
+========================= */
 
 .memories {
     min-height: 100vh;
-    padding: 120px 25px;
+
+    padding:
+        130px 25px 180px;
+
     text-align: center;
 }
 
 .memories h2 {
-    font-size: clamp(35px, 6vw, 60px);
+    margin: 0;
+
+    font-size: clamp(45px, 7vw, 75px);
+
     font-weight: normal;
-    margin-bottom: 15px;
 }
 
 .memories-subtitle {
-    opacity: 0.55;
+    margin:
+        20px auto 80px;
+
+    max-width: 600px;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
     font-style: italic;
-    margin-bottom: 70px;
+
+    opacity: .55;
 }
 
+
+/* FOTOĞRAFLAR */
+
 .photos {
-    max-width: 1000px;
+    max-width: 1050px;
+
     margin: auto;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 25px;
+
+    align-items: center;
 }
 
 .photo {
-    aspect-ratio: 3 / 4;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(5px);
+    position: relative;
+
     overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45);
+
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
 }
 
-.photo span {
-    opacity: 0.25;
+.photo.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.photo:hover {
+    transform:
+        translateY(-8px)
+        scale(1.015);
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.6);
+}
+
+.photo img {
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .7s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.04);
+}
+
+
+/* =========================
+   ÖZEL GÜN
+========================= */
+
+.special-memory {
+    min-height: 100vh;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding:
+        120px 40px 170px;
+
+    display: grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+.special-text {
+    opacity: 0;
+
+    transform: translateX(-40px);
+
+    transition:
+        opacity 1.3s ease,
+        transform 1.3s ease;
+}
+
+.special-text.visible {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+.little {
     font-family: Arial, sans-serif;
-    font-size: 13px;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    opacity: .45;
 }
 
-@media (max-width: 700px) {
-    .photos {
-        grid-template-columns: 1fr;
-        max-width: 350px;
-    }
+.special-text h2 {
+    margin:
+        22px 0 35px;
+
+    font-size:
+        clamp(42px, 6vw, 72px);
+
+    line-height: 1.05;
+
+    font-weight: normal;
+}
+
+.special-text p {
+    font-size: 20px;
+
+    line-height: 1.9;
+
+    opacity: .7;
+}
+
+.special-text .balim {
+    margin-top: 40px;
+
+    font-size: 26px;
+
+    font-style: italic;
+
+    opacity: 1;
 }
 
 
-/* AÇILIŞ ANİMASYONU */
+/* ÖZEL FOTOĞRAF */
+
+.special-photo {
+    position: relative;
+
+    opacity: 0;
+
+    transform:
+        translateY(45px)
+        rotate(1deg);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.special-photo.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        rotate(1deg);
+}
+
+.special-photo::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -30px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    filter: blur(45px);
+
+    border-radius: 40px;
+
+    z-index: -1;
+}
+
+.special-photo img {
+    width: 100%;
+
+    max-height: 750px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.65);
+}
+
+
+/* =========================
+   SON MESAJ
+========================= */
+
+.final {
+    min-height: 90vh;
+
+    padding: 80px 25px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.final-content {
+    max-width: 800px;
+}
+
+.final-small {
+    font-family: Arial, sans-serif;
+
+    letter-spacing: 5px;
+
+    font-size: 10px;
+
+    opacity: .4;
+}
+
+.final h2 {
+    margin:
+        30px 0;
+
+    font-size:
+        clamp(38px, 7vw, 75px);
+
+    font-weight: normal;
+}
+
+.final p {
+    font-size:
+        clamp(20px, 3vw, 27px);
+
+    line-height: 1.9;
+
+    opacity: .75;
+}
+
+.final-love {
+    margin-top: 55px;
+
+    font-size:
+        clamp(27px, 5vw, 42px);
+
+    font-style: italic;
+}
+
+
+/* =========================
+   ANİMASYON
+========================= */
 
 @keyframes appear {
+
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(30px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   TELEFON
+========================= */
+
+@media (max-width: 800px) {
+
+    .photos {
+        grid-template-columns: 1fr;
+
+        max-width: 390px;
+
+        gap: 35px;
+    }
+
+    .photo img {
+        height: auto;
+
+        max-height: 600px;
+    }
+
+    .special-memory {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+        padding:
+            100px 25px 140px;
+
+        text-align: center;
+    }
+
+    .special-text {
+        order: 1;
+    }
+
+    .special-photo {
+        order: 2;
+
+        max-width: 450px;
+
+        margin: auto;
     }
 }
 
@@ -215,69 +562,97 @@ h1 {
 
 <body>
 
+
 <div id="stars"></div>
 
 
+<!-- =====================
+     GİRİŞ
+===================== -->
+
 <section class="hero">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <div class="for-you">
-            SADECE SENİN İÇİN
-        </div>
+    <div class="for-you">
+        SADECE SENİN İÇİN
+    </div>
 
-        <h1>Simay</h1>
+    <h1>Simay</h1>
 
-        <div class="line"></div>
+    <div class="line"></div>
 
-        <div class="message">
+    <div class="message">
 
-            Balım,<br><br>
+        Balım,<br><br>
 
-            sana söylemek istediğim şeyleri
-            tek bir sayfaya sığdırabilir miyim bilmiyorum.<br><br>
+        sana söylemek istediğim şeyleri
+        tek bir sayfaya sığdırabilir miyim bilmiyorum.<br><br>
 
-            Ama bir yerden başlamak istedim.<br><br>
+        Ama bir yerden başlamak istedim.<br><br>
 
-            O yüzden burası sadece senin.
-
-        </div>
-
-        <div class="main-message">
-            Seni yıldızlar kadar çok seviyorum.
-        </div>
-
-        <div class="scroll">
-            BİRAZ DAHA AŞAĞI
-            <span class="arrow">⌄</span>
-        </div>
+        O yüzden burası sadece senin.
 
     </div>
 
+    <div class="love">
+        Seni yıldızlar kadar çok seviyorum.
+    </div>
+
+    <div class="scroll">
+
+        BİRAZ DAHA AŞAĞI
+
+        <span class="arrow">
+            ⌄
+        </span>
+
+    </div>
+
+</div>
+
 </section>
 
+
+
+<!-- =====================
+     FOTOĞRAFLAR
+===================== -->
 
 <section class="memories">
 
     <h2>Biz.</h2>
 
     <div class="memories-subtitle">
-        En sevdiğim fotoğrafların ortak bir yanı var.
+
+        En sevdiğim fotoğrafların
+        ortak bir yanı var.<br>
+
         Hepsinde sen varsın.
+
     </div>
+
 
     <div class="photos">
 
-        <div class="photo">
-            <span>bir anımız</span>
+        <div class="photo reveal">
+            <img
+                src="foto1.jpg"
+                alt="Birlikte bir anımız">
         </div>
 
-        <div class="photo">
-            <span>bir anımız daha</span>
+
+        <div class="photo reveal">
+            <img
+                src="foto2.jpg"
+                alt="Birlikte bir anımız">
         </div>
 
-        <div class="photo">
-            <span>ve bir tane daha</span>
+
+        <div class="photo reveal">
+            <img
+                src="foto3.jpg"
+                alt="Birlikte bir anımız">
         </div>
 
     </div>
@@ -285,25 +660,136 @@ h1 {
 </section>
 
 
+
+<!-- =====================
+     ÖZEL GÜN
+===================== -->
+
+<section class="special-memory">
+
+
+<div class="special-text reveal">
+
+    <div class="little">
+        EN ÖZEL GÜNLERİMDEN BİRİ
+    </div>
+
+    <h2>
+        Bu günü<br>
+        unutamam.
+    </h2>
+
+    <p>
+
+        Bu fotoğrafa her baktığımda
+        sadece o günü değil,
+
+        senin yanımda olduğun o anı
+        yeniden hatırlıyorum.
+
+    </p>
+
+    <p>
+
+        Bazı günler geçip gidiyor.<br>
+
+        Bazılarıysa insanın içinde
+        bir yerde kalıyor.
+
+    </p>
+
+    <p class="balim">
+        Bu da onlardan biri, balım.
+    </p>
+
+</div>
+
+
+<div class="special-photo reveal">
+
+    <img
+        src="ozelgun.jpg"
+        alt="En özel günlerimizden biri">
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================
+     FİNAL
+===================== -->
+
+<section class="final">
+
+<div class="final-content">
+
+    <div class="final-small">
+        VE SON BİR ŞEY
+    </div>
+
+    <h2>
+        İyi ki biz.
+    </h2>
+
+    <p>
+
+        Daha birlikte yaşayacağımız
+        bir sürü an,
+
+        çekeceğimiz bir sürü fotoğraf
+
+        ve anlatacağımız
+        bir sürü hikâye var.
+
+    </p>
+
+    <div class="final-love">
+        Yıldızlar kadar öpücük. ✦
+    </div>
+
+</div>
+
+</section>
+
+
+
 <script>
 
-/* Rastgele yıldızlar oluştur */
+/* =========================
+   YILDIZLAR
+========================= */
 
-const starsContainer = document.getElementById("stars");
+const starsContainer =
+    document.getElementById("stars");
 
-for (let i = 0; i < 180; i++) {
 
-    const star = document.createElement("div");
+for (let i = 0; i < 220; i++) {
+
+    const star =
+        document.createElement("div");
 
     star.className = "star";
 
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
 
-    const size = Math.random() * 2.2 + 0.6;
+    star.style.left =
+        Math.random() * 100 + "%";
 
-    star.style.width = size + "px";
-    star.style.height = size + "px";
+    star.style.top =
+        Math.random() * 100 + "%";
+
+
+    const size =
+        Math.random() * 2.2 + .5;
+
+    star.style.width =
+        size + "px";
+
+    star.style.height =
+        size + "px";
+
 
     star.style.setProperty(
         "--duration",
@@ -312,13 +798,56 @@ for (let i = 0; i < 180; i++) {
 
     star.style.setProperty(
         "--delay",
-        (Math.random() * 5) + "s"
+        (Math.random() * 6) + "s"
     );
+
 
     starsContainer.appendChild(star);
 }
 
+
+
+/* =========================
+   KAYDIRDIKÇA FOTOĞRAFLAR
+   ORTAYA ÇIKSIN
+========================= */
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .18
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
+
 </script>
+
 
 </body>
 </html>
