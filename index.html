@@ -1045,7 +1045,174 @@ h1 {
         letter-spacing: 1px;
     }
 
-}    
+}   
+    /* =========================
+   YILDIZLI FİNAL
+========================= */
+
+.star-finale {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+}
+
+.star-finale.visible {
+    opacity: 1;
+}
+
+
+/* Final bölümündeki ekstra yıldızlar */
+
+.finale-stars {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.finale-star {
+    position: absolute;
+
+    width: var(--size);
+    height: var(--size);
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 6px rgba(255,255,255,.9),
+        0 0 14px rgba(160,180,255,.65);
+
+    opacity: 0;
+
+    transform: scale(.2);
+
+    transition:
+        opacity 2s ease var(--delay),
+        transform 3s ease var(--delay);
+}
+
+
+/* Bölüm ekrana gelince yıldızlar belirir */
+
+.star-finale.visible .finale-star {
+    opacity: var(--opacity);
+    transform: scale(1);
+}
+
+
+/* Yazı */
+
+.finale-content {
+    position: relative;
+    z-index: 5;
+
+    padding: 30px;
+
+    opacity: 0;
+
+    transform: scale(.92);
+
+    transition:
+        opacity 3s ease 1.8s,
+        transform 3s ease 1.8s;
+}
+
+.star-finale.visible .finale-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.finale-small {
+    margin-bottom: 30px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    opacity: .35;
+}
+
+.finale-message {
+    font-size: clamp(38px, 7vw, 78px);
+
+    line-height: 1.35;
+
+    font-style: italic;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.25),
+        0 0 30px rgba(160,180,255,.18),
+        0 0 70px rgba(100,130,255,.12);
+
+    animation:
+        finaleGlow 4s ease-in-out infinite alternate;
+}
+
+.finale-message span {
+    display: inline-block;
+
+    margin-top: 10px;
+}
+
+@keyframes finaleGlow {
+
+    from {
+        text-shadow:
+            0 0 8px rgba(255,255,255,.15),
+            0 0 25px rgba(150,170,255,.10);
+    }
+
+    to {
+        text-shadow:
+            0 0 14px rgba(255,255,255,.45),
+            0 0 40px rgba(150,170,255,.28),
+            0 0 90px rgba(100,130,255,.18);
+    }
+
+}
+
+
+/* Ortadaki yıldızlar daha güçlü görünsün */
+
+.finale-star.close {
+    box-shadow:
+        0 0 8px white,
+        0 0 20px rgba(170,190,255,.9),
+        0 0 45px rgba(120,150,255,.45);
+
+    animation:
+        finaleTwinkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes finaleTwinkle {
+
+    from {
+        filter: brightness(.7);
+    }
+
+    to {
+        filter: brightness(1.8);
+    }
+
+}
 </style>
 </head>
 
@@ -1334,35 +1501,22 @@ h1 {
      FİNAL
 ===================== -->
 
-<section class="final">
+<section class="star-finale reveal">
 
-<div class="final-content">
+    <div class="finale-stars" id="finaleStars"></div>
 
-    <div class="final-small">
-        VE SON BİR ŞEY
+    <div class="finale-content">
+
+        <div class="finale-small">
+            SONSUZA KADAR BİZ
+        </div>
+
+        <div class="finale-message">
+            Yıldızlar kadar öpücük,<br>
+            <span>balım. 💙</span>
+        </div>
+
     </div>
-
-    <h2>
-        İyi ki biz.
-    </h2>
-
-    <p>
-
-        Daha birlikte yaşayacağımız
-        bir sürü an,
-
-        çekeceğimiz bir sürü fotoğraf
-
-        ve anlatacağımız
-        bir sürü hikâye var.
-
-    </p>
-
-    <div class="final-love">
-        Yıldızlar kadar öpücük. ✦
-    </div>
-
-</div>
 
 </section>
 
@@ -1571,6 +1725,75 @@ function updateLoveCounter() {
 updateLoveCounter();
 
 setInterval(updateLoveCounter, 1000);
+    /* =========================
+   FİNAL YILDIZLARI
+========================= */
+
+const finaleStars =
+    document.getElementById("finaleStars");
+
+
+for (let i = 0; i < 160; i++) {
+
+    const star =
+        document.createElement("div");
+
+    star.className = "finale-star";
+
+
+    /*
+       Yıldızların çoğunu ekranın
+       merkezine yakın topluyoruz.
+    */
+
+    let x;
+    let y;
+
+    if (Math.random() < 0.65) {
+
+        x = 50 +
+            (Math.random() - 0.5) * 65;
+
+        y = 50 +
+            (Math.random() - 0.5) * 45;
+
+        star.classList.add("close");
+
+    } else {
+
+        x = Math.random() * 100;
+        y = Math.random() * 100;
+
+    }
+
+
+    star.style.left = x + "%";
+    star.style.top = y + "%";
+
+
+    const size =
+        Math.random() * 2.8 + 0.7;
+
+    star.style.setProperty(
+        "--size",
+        size + "px"
+    );
+
+
+    star.style.setProperty(
+        "--opacity",
+        Math.random() * 0.65 + 0.25
+    );
+
+
+    star.style.setProperty(
+        "--delay",
+        Math.random() * 1.8 + "s"
+    );
+
+
+    finaleStars.appendChild(star);
+}
 </script>
 
 
