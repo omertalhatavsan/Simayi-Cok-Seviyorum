@@ -1,1 +1,149 @@
-test
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Simay ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, serif;
+      color: white;
+      background:
+        radial-gradient(circle at top, #40203c 0%, #190d1c 45%, #08050b 100%);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 750px;
+      animation: appear 2s ease;
+    }
+
+    .small-title {
+      font-size: 18px;
+      letter-spacing: 4px;
+      opacity: 0.65;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 10vw, 100px);
+      margin: 0;
+      font-weight: normal;
+    }
+
+    .line {
+      width: 70px;
+      height: 1px;
+      background: rgba(255,255,255,0.5);
+      margin: 35px auto;
+    }
+
+    .message {
+      font-size: clamp(20px, 4vw, 28px);
+      line-height: 1.8;
+      opacity: 0.92;
+    }
+
+    .stars {
+      font-size: 25px;
+      letter-spacing: 12px;
+      margin-top: 40px;
+      animation: glow 2s infinite alternate;
+    }
+
+    .signature {
+      margin-top: 55px;
+      font-size: 17px;
+      font-style: italic;
+      opacity: 0.7;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        opacity: 0.35;
+        text-shadow: 0 0 5px white;
+      }
+
+      to {
+        opacity: 1;
+        text-shadow: 0 0 20px white;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="small-title">
+        SADECE SENİN İÇİN
+      </div>
+
+      <h1>Simay</h1>
+
+      <div class="line"></div>
+
+      <div class="message">
+        Balım,<br><br>
+
+        sana söylemek istediğim şeyleri
+        tek bir sayfaya sığdırabilir miyim bilmiyorum.<br><br>
+
+        Ama bir yerden başlamak istedim.<br><br>
+
+        O yüzden burası sadece senin.
+      </div>
+
+      <div class="stars">
+        ✦ ✧ ✦
+      </div>
+
+      <div class="message" style="margin-top: 35px;">
+        Seni yıldızlar kadar çok seviyorum.
+      </div>
+
+      <div class="signature">
+        — seni çok seven biri
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
